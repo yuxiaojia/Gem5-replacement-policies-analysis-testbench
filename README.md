@@ -73,7 +73,7 @@ ls /opt/rocm/bin
 Run [benchmarks](https://github.com/yuxiaojia/real_gpu_benchmark) in real GPU with [rocprof](https://github.com/ROCm/rocprofiler/blob/rocm-4.0.x/doc/rocprof.md#6publicly-available-counters-and-metrics) in eldin machine to reverse engeering the replacement policies that are used in real GPU
 
 ```bash
-rocprof -i input.txt
+rocprof -i input.txt application_name
 ```
 ### Running more complex benchmarks
 Running [rodinia, panotia](https://github.com/hal-uw/gem5-gpu-benchmark-suite/tree/main/condor) and more complex benchmarks to further test the benefits of replacement policies
