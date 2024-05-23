@@ -16,7 +16,7 @@ We will then use gem5 to analyze the benefits of replacement policies on GPU las
 
 ## Installation
 
-Use the docker image gcr.io/gem5-test/gcn-gpu:latest for compiling the tests, building the gem5 VEGA_X86 model and running the tests (Reference from [square](https://gem5.googlesource.com/public/gem5-resources/+/refs/heads/stable/src/gpu/square) test website, details can also be found there)
+Reference from [square](https://gem5.googlesource.com/public/gem5-resources/+/refs/heads/stable/src/gpu/square) test website, details about docker usage can be found there
 
 ### Building the gem5 GPU
 The latest update is in https://github.com/gem5/gem5/compare/develop...yuxiaojia:gem5:develop
@@ -43,14 +43,20 @@ docker run --volume $(pwd):$(pwd) -w $(pwd) gcr.io/gem5-test/gcn-gpu:latest make
 ```
 
 ### Running the tests
+Running benchmarks with different replacement policies for TCP and TCC caches
+
+1. First running with debug flag GPUKernelInfo to get kernel1 start time and complete time as debug start time and debug end time
 ```bash
 #To get --debug-start time and --debug-end time
-docker run --volume $(pwd):$(pwd) -w $(pwd) gcr.io/gem5-test/gcn-gpu:v22-1 build/VEGA_X86/gem5.opt --debug-flag=GPUKernelInfo --debug-start=(kernel1_launch_time) --debug-end=(kernel1_complete_time)
-configs/example/apu_se.py -n 3 --dgpu --gfx-version=gfx900 --num-compute-units=4 --cu-per-sa=4 --num-gpu-complex=1 --reg-alloc-policy=dynamic --num-tccs=8 --num-dirs=64 
---mem-size=16GB --mem-type=HBM_2000_4H_1x64 --vreg-file-size=16384 --sreg-file-size=800 --tcc-size=4MB --gpu-clock=1801MHz --ruby-clock=1000MHz --vrf_lm_bus_latency=6 
---mem-req-latency=69 --mem-resp-latency=69 --mandatory_queue_latency=1 --max-cu-tokens=160 --max-coalesces-per-cycle=10 --sqc-size=16kB --tcp-size=4MB --scalar-mem-req-latency=28 
---TCP_latency=4 --tcp-assoc=16 --tcp-num-banks=16 --TCC_latency=121 --tcc-assoc=16 --tcc-tag-access-latency=1 --tcc-data-access-latency=1 --tcp-rp=FIFORP --WB_L2 --tcc-rp=FIFORP -c test_name
+docker run --volume $(pwd):$(pwd) -w $(pwd) gcr.io/gem5-test/gcn-gpu:v22-1 build/VEGA_X86/gem5.opt --debug-flag=GPUKernelInfo configs/example/apu_se.py -n 3 --dgpu --gfx-version=gfx900 
+--num-compute-units=4 --cu-per-sa=4 --num-gpu-complex=1 --reg-alloc-policy=dynamic --num-tccs=8 --num-dirs=64 --mem-size=16GB --mem-type=HBM_2000_4H_1x64 --vreg-file-size=16384 
+--sreg-file-size=800 --tcc-size=4MB --gpu-clock=1801MHz --ruby-clock=1000MHz --vrf_lm_bus_latency=6 --mem-req-latency=69 --mem-resp-latency=69 --mandatory_queue_latency=1 
+--max-cu-tokens=160 --max-coalesces-per-cycle=10 --sqc-size=16kB --tcp-size=4MB --scalar-mem-req-latency=28 --TCP_latency=4 --tcp-assoc=16 --tcp-num-banks=16 --TCC_latency=121 
+--tcc-assoc=16 --tcc-tag-access-latency=1 --tcc-data-access-latency=1 --tcp-rp=FIFORP --WB_L2 --tcc-rp=FIFORP -c test_name
+```
 
+2. Running with debug start time and debug end time to get partial traces, and chooses debug flags like RubyHitMiss, GPUExec, GPUALL, GPUCommandProc for more detailed traces
+```bash
 #To get detailed information
 docker run --volume $(pwd):$(pwd) -w $(pwd) gcr.io/gem5-test/gcn-gpu:v22-1 build/VEGA_X86/gem5.opt --debug-flag=(e.x.RubyHitMiss,GPUExec,GPUALL,GPUCommandProc) --debug-start=(kernel1_launch_time) 
 --debug-end=(kernel1_complete_time) configs/example/apu_se.py -n 3 --dgpu --gfx-version=gfx900 --num-compute-units=4 --cu-per-sa=4 --num-gpu-complex=1 --reg-alloc-policy=dynamic 
@@ -63,6 +69,7 @@ docker run --volume $(pwd):$(pwd) -w $(pwd) gcr.io/gem5-test/gcn-gpu:v22-1 build
 ## Usage and further steps
 ### Running in real GPU
 #### Add rocprof into the path
+Real GPU information in eldin https://gpuopen.com/wp-content/uploads/2019/08/RDNA_Architecture_public.pdf
 ```bash
 echo $SHELL
 vim ~/.bashrc
