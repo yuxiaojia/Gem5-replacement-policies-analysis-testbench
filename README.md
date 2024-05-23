@@ -67,6 +67,7 @@ docker run --volume $(pwd):$(pwd) -w $(pwd) gcr.io/gem5-test/gcn-gpu:v22-1 build
 ```
 
 ## Usage and further steps
+
 ### Running in real GPU
 #### Add rocprof into the path
 Real GPU information in eldin https://gpuopen.com/wp-content/uploads/2019/08/RDNA_Architecture_public.pdf
@@ -77,8 +78,8 @@ source ~/.bashrc
 ls /opt/rocm/bin
 ```
 
+#### Run benchmarks with rocprof
 Run [benchmarks](https://github.com/yuxiaojia/real_gpu_benchmark) in real GPU with [rocprof](https://github.com/ROCm/rocprofiler/blob/rocm-4.0.x/doc/rocprof.md#6publicly-available-counters-and-metrics) in eldin machine to reverse engeering the replacement policies that are used in real GPU
-
 ```bash
 rocprof -i input.txt application_name
 ```
