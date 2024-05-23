@@ -84,6 +84,6 @@ rocprof -i input.txt application_name
 ```
 ### Running more complex benchmarks
 Running [rodinia, panotia](https://github.com/hal-uw/gem5-gpu-benchmark-suite/tree/main/condor) and more complex benchmarks to further test the benefits of replacement policies
-#### How to use condor
-752 Condor Assignment: https://pages.cs.wisc.edu/~sinclair/courses/cs752/fall2021/handouts/hw4.html
+#### How to use Condor
+Use [Condor](https://chtc.cs.wisc.edu/) for running benchmarks in parallel
 
