@@ -21,7 +21,7 @@ Reference from [square](https://gem5.googlesource.com/public/gem5-resources/+/re
 ### Building the gem5 GPU
 The latest update is in https://github.com/gem5/gem5/compare/develop...yuxiaojia:gem5:develop
 ```bash
-git clone https://gem5.googlesource.com/public/gem5
+git clone https://github.com/gem5/gem5.git
 cd gem5
 git checkout origin/develop -b develop
 git chechout 26d951a
