@@ -3,10 +3,10 @@
 Previously we have fully tested the replacement policies on CPU MI Example coherence (https://gem5-review.googlesource.com/c/public/gem5/+/60389). Below are how to run the tests for CPU:
 
 ``` bash
-git clone https://gem5.googlesource.com/public/gem5
+git https://github.com/gem5/gem5.git
 cd gem5
 git checkout origin/develop -b develop
-git fetch https://gem5.googlesource.com/public/gem5 refs/changes/89/60389/16 && git checkout -b change-60389 FETCH_HEAD
+git checkout bd31956
 python3 which scons build/X86_MI_example/gem5.opt -j9
 ./main.py run -j9 -t 240 gem5/replacement-policies
 ./main.py run --skip-build -t 240 gem5/replacement-policies
