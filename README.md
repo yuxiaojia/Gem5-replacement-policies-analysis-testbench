@@ -9,7 +9,7 @@ git checkout origin/develop -b develop
 git checkout bd31956
 python3 which scons build/X86_MI_example/gem5.opt -j9
 cd tests
-# First time run
+# first time run
 ./main.py run -j 9 -t 240 gem5/replacement-policies # -t indicates how many threads are used to run tests
 # Skip build after first time run
 ./main.py run --skip-build -t 240 gem5/replacement-policies
