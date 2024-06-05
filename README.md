@@ -1,6 +1,6 @@
 # Gem5 replacement policies analysis
 
-Previously we have fully tested the replacement policies on CPU MI Example coherence (https://github.com/gem5/gem5/commit/bd319560605f1e3eebf828efd7e06206874d6515). Below are how to run the tests for CPU:
+Previously we have fully tested the replacement policies on CPU MI Example coherence, and the commit can be found at (https://github.com/gem5/gem5/commit/bd319560605f1e3eebf828efd7e06206874d6515). Below are how to run the tests for CPU:
 
 ``` bash
 git https://github.com/gem5/gem5.git
@@ -8,7 +8,8 @@ cd gem5
 git checkout origin/develop -b develop
 git checkout bd31956
 python3 which scons build/X86_MI_example/gem5.opt -j9
-./main.py run -j9 -t 240 gem5/replacement-policies
+cd tests
+./main.py run -j9 -t 240 gem5/replacement-policies # -t indicates how many threads are used to run tests
 ./main.py run --skip-build -t 240 gem5/replacement-policies
 ```
 
@@ -69,11 +70,14 @@ docker run --volume $(pwd):$(pwd) -w $(pwd) gcr.io/gem5-test/gcn-gpu:v22-1 build
 ## Usage and further steps
 
 ### Running in real GPU
-#### Add rocprof into the path
 Real GPU information in eldin https://gpuopen.com/wp-content/uploads/2019/08/RDNA_Architecture_public.pdf
+#### Add rocprof into the path
 ```bash
 echo $SHELL
 vim ~/.bashrc
+```
+add "export PATH=/opt/rocm/bin:$PATH" into the file to add rocm into the path
+```bash
 source ~/.bashrc
 ls /opt/rocm/bin
 ```
@@ -84,7 +88,7 @@ Run [benchmarks](https://github.com/yuxiaojia/real_gpu_benchmark) in real GPU wi
 rocprof -i input.txt application_name
 ```
 ### Running more complex benchmarks
-Running [rodinia, panotia](https://github.com/hal-uw/gem5-gpu-benchmark-suite/tree/main/condor) and more complex benchmarks to further test the benefits of replacement policies
+Running [Rodinia, Pannotia](https://github.com/hal-uw/gem5-gpu-benchmark-suite/tree/main/condor) and more complex benchmarks to further test the benefits of replacement policies
 #### How to use Condor
 Use [Condor](https://chtc.cs.wisc.edu/) for running benchmarks in parallel
 
