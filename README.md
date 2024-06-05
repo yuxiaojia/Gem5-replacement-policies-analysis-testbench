@@ -1,6 +1,6 @@
 # Gem5 replacement policies analysis
 
-Previously we have fully tested the replacement policies on CPU MI Example coherence, and the commit can be found at (https://github.com/gem5/gem5/commit/bd319560605f1e3eebf828efd7e06206874d6515). Below are how to run the tests for CPU:
+Previously we have fully tested the replacement policies on CPU MI Example coherence, and the commit can be found at [github](https://github.com/gem5/gem5/commit/bd319560605f1e3eebf828efd7e06206874d6515) or [googlesource](https://gem5-review.googlesource.com/c/public/gem5/+/60389). Below are how to run the tests for CPU:
 
 ``` bash
 git https://github.com/gem5/gem5.git
