@@ -27,7 +27,7 @@ The changes can also be cherry picked from pull requests below:\
 [gpu-compute,mem-ruby: Add RubyHitMiss flag for TCP and TCC cache](https://github.com/gem5/gem5/pull/1226)\
 [gpu-compute, util-m5: add GPU kernel exit events](https://github.com/gem5/gem5/pull/1217)\
 [gpu-compute: Added functions to choose replacement policies for GPU](https://github.com/gem5/gem5/pull/1213)\
-[configs: Add replacement policy options for GPUFS](https://github.com/gem5/gem5/pull/1230)\
+[configs: Add replacement policy options for GPUFS](https://github.com/gem5/gem5/pull/1230)
 ```bash
 git clone https://github.com/gem5/gem5.git
 cd gem5
