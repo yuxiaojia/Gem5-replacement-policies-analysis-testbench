@@ -24,10 +24,10 @@ Reference from [square](https://gem5.googlesource.com/public/gem5-resources/+/re
 ### Building the gem5 GPU
 All the changes needed for using this [testbench](https://github.com/yuxiaojia/Testbench) have been merged into develop branch.\
 The changes can also be found from pull requests below:\
-[gpu-compute,mem-ruby: Add RubyHitMiss flag for TCP and TCC cache](https://github.com/gem5/gem5/pull/1226)\
-[gpu-compute, util-m5: add GPU kernel exit events](https://github.com/gem5/gem5/pull/1217)\
-[gpu-compute: Added functions to choose replacement policies for GPU](https://github.com/gem5/gem5/pull/1213)\
-[configs: Add replacement policy options for GPUFS](https://github.com/gem5/gem5/pull/1230)
+1. [gpu-compute,mem-ruby: Add RubyHitMiss flag for TCP and TCC cache](https://github.com/gem5/gem5/pull/1226)\
+2. [gpu-compute, util-m5: add GPU kernel exit events](https://github.com/gem5/gem5/pull/1217)\
+3. [gpu-compute: Added functions to choose replacement policies for GPU](https://github.com/gem5/gem5/pull/1213)\
+4. [configs: Add replacement policy options for GPUFS](https://github.com/gem5/gem5/pull/1230)
 ```bash
 git clone https://github.com/gem5/gem5.git
 cd gem5
