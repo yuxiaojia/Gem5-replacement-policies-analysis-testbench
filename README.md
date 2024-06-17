@@ -22,7 +22,7 @@ We will then use gem5 to analyze the benefits of replacement policies on GPU las
 Reference from [square](https://gem5.googlesource.com/public/gem5-resources/+/refs/heads/stable/src/gpu/square) test website, details about docker usage can be found there
 
 ### Building the gem5 GPU
-All the changes needed for using this testbench have been merged into develop branch.
+All the changes needed for using this [testbench](https://github.com/yuxiaojia/Testbench) have been merged into develop branch.\
 The changes can also be cherry picked from pull requests below:\
 [gpu-compute,mem-ruby: Add RubyHitMiss flag for TCP and TCC cache](https://github.com/gem5/gem5/pull/1226)\
 [gpu-compute, util-m5: add GPU kernel exit events](https://github.com/gem5/gem5/pull/1217)\
