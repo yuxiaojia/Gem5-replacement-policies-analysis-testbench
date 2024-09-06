@@ -93,8 +93,45 @@ Run [benchmarks](https://github.com/yuxiaojia/real_gpu_benchmark) in real GPU wi
 ```bash
 rocprof -i input.txt application_name
 ```
+Sample input.txt file:
+```bash
+   # Perf counters group 1
+   # pmc : Wavefronts VALUInsts SALUInsts SFetchInsts MemUnitStalled
+   # Perf counters group 2
+   # pmc : TCC_HIT[0], TCC_MISS[0]
+   # TCC_MISS[0], TCC_MISS[1]
+   pmc : TCC_HIT_sum, TCC_MISS_sum,
+   pmc: TCC_MISS[0], TCC_MISS[1], TCC_MISS[2], TCC_MISS[3],
+   pmc: TCC_MISS[4],TCC_MISS[5],TCC_MISS[6],TCC_MISS[7],
+   pmc: TCC_MISS[8],TCC_MISS[9],TCC_MISS[10],TCC_MISS[11],
+   pmc: TCC_MISS[12],TCC_MISS[13],TCC_MISS[14],TCC_MISS[15],
+   pmc: TCC_HIT[0], TCC_HIT[1], TCC_HIT[2], TCC_HIT[3],
+   pmc: TCC_HIT[4],TCC_HIT[5],TCC_HIT[6],TCC_HIT[7],
+   pmc: TCC_HIT[8],TCC_HIT[9],TCC_HIT[10],TCC_HIT[11],
+   pmc: TCC_HIT[12],TCC_HIT[13],TCC_HIT[14],TCC_HIT[15],
+
+   range: 
+   gpu: 0 1
+   kernel: 
+```
 ### Running more complex benchmarks
 Running [Rodinia, Pannotia](https://github.com/hal-uw/gem5-gpu-benchmark-suite/tree/main/condor) and more complex benchmarks to further test the benefits of replacement policies
 #### How to use Condor
 Use [Condor](https://chtc.cs.wisc.edu/) for running benchmarks in parallel
+
+### Hint
+#### Docker gcc version
+Docker image might encounter error if the gcc version is outdate
+```bash
+Error: gcc version 10 or newer required
+```
+Fix by creating a new image:
+```bash
+cd $GEM5_HEAD/util/dockerfiles/gcn-gpu/
+docker build -t <desiredImageName> .
+```
+Replace previous docker with 
+```bash
+docker.io/library/<desiredImageName>
+```
 
