@@ -62,10 +62,10 @@ docker run --volume $(pwd):$(pwd) -w $(pwd) gcr.io/gem5-test/gcn-gpu:v22-1 build
 --tcc-assoc=16 --tcc-tag-access-latency=1 --tcc-data-access-latency=1 --tcp-rp=FIFORP --WB_L2 --tcc-rp=FIFORP -c test_name
 ```
 
-2. Running with debug start time and debug end time to get partial traces, and chooses debug flags like RubyHitMiss, GPUExec, GPUALL, GPUCommandProc for more detailed traces
+2. Running with debug start time and debug end time to get partial traces, and chooses debug flags like RubyHitMiss, ProtocolTrace, GPUKernelInfo, GPUExec, GPUALL, GPUCommandProc for more detailed traces
 ```bash
 #To get detailed information
-docker run --volume $(pwd):$(pwd) -w $(pwd) gcr.io/gem5-test/gcn-gpu:v22-1 build/VEGA_X86/gem5.opt --debug-flag=(e.x.RubyHitMiss,GPUExec,GPUALL,GPUCommandProc) --debug-start=(kernel1_launch_time) 
+docker run --volume $(pwd):$(pwd) -w $(pwd) gcr.io/gem5-test/gcn-gpu:v22-1 build/VEGA_X86/gem5.opt --debug-flag=(e.x.RubyHitMiss,ProtocolTrace, GPUKernelInfo,GPUExec,GPUALL,GPUCommandProc) --debug-start=(kernel1_launch_time) 
 --debug-end=(kernel1_complete_time) configs/example/apu_se.py -n 3 --dgpu --gfx-version=gfx900 --num-compute-units=4 --cu-per-sa=4 --num-gpu-complex=1 --reg-alloc-policy=dynamic 
 --num-tccs=8 --num-dirs=64 --mem-size=16GB --mem-type=HBM_2000_4H_1x64 --vreg-file-size=16384 --sreg-file-size=800 --tcc-size=4MB --gpu-clock=1801MHz --ruby-clock=1000MHz 
 --vrf_lm_bus_latency=6 --mem-req-latency=69 --mem-resp-latency=69 --mandatory_queue_latency=1 --max-cu-tokens=160 --max-coalesces-per-cycle=10 --sqc-size=16kB --tcp-size=4MB 
